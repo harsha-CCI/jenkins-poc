@@ -43,7 +43,7 @@
 						<muleVersion>4.4.0</muleVersion>
 						<username>${username}</username>
 						<password>${password}</password>
-						<applicationName>${project.artifactId}</applicationName>
+						<applicationName>hv-jenkins-poc</applicationName>
 						<environment>Sandbox</environment>
 						<workerType>${workerType}</workerType>
 						<workers>1</workers>
