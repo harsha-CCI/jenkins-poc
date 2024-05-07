@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="dc768b94-aade-478f-a600-dc844bb0dd83" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="jenkins-pocFlow" doc:id="56cc7a1e-bff6-41b0-9857-44324e5c5aba" >
+		<http:listener doc:name="Listener" doc:id="e6936356-ab68-4c53-915e-f4e307c4aee8" config-ref="HTTP_Listener_config" path="/jenkins"/>
+		<logger level="INFO" doc:name="START" doc:id="8ae32d41-e395-48a3-bf51-303e05f458f3" />
+		<set-payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;{&#10;	"message":"Jenkins POc"&#10;}]' doc:name="Set Payload" doc:id="ab273f25-696a-4945-b5ba-40ff8025ffbe" />
+		<logger level="INFO" doc:name="END" doc:id="e2c9e3b6-a6dd-434e-bd38-15585000e35d" />
+	</flow>
+</mule>
